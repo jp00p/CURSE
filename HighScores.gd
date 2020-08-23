@@ -9,7 +9,7 @@ onready var score_grid = $CenterContainer/HBoxContainer/VBoxContainer2/ScrollCon
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HTTPRequest.request("http://www.jp00p.com/curse/get_high_score.php")
+	$HTTPRequest.request("https://jp00p.com/curse/get_high_score.php")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,4 +30,8 @@ func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 
 
 func _on_Restart_pressed():
+	Globals.score = 0
+	Globals.current_day = 1
+	Globals.current_round = 1
+	Globals.round_time = Globals.round_time[0]
 	get_tree().change_scene("res://Title.tscn")

@@ -38,7 +38,7 @@ func _on_Button_pressed():
 		final_screen()
 	else:
 		#send high score to my server!
-		$HTTPRequest.request("http://www.jp00p.com/curse/set_high_score.php?password=supersecretpassword&name="+name+"&score="+str(Globals.score))
+		$HTTPRequest.request("https://jp00p.com/curse/set_high_score.php?password=supersecretpassword&name="+name+"&score="+str(Globals.score))
 		yield($HTTPRequest, "request_completed")
 		final_screen()
 
