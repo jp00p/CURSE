@@ -1,0 +1,256 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://UI.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Main.gd" type="Script" id=2]
+[ext_resource path="res://ShopTiles.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Particles/circle_05.png" type="Texture" id=4]
+[ext_resource path="res://Shopkeeper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ScoreHolder.tscn" type="PackedScene" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "flame"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( -2, -2, -0.5, 1, 1 ),
+"update": 0,
+"values": [ 0.5, 0.6, 0.4, 0.2, 0.6 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "pulse"
+length = 1.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:texture_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.25, 0.33 ]
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 440.912, 263.504, 0, 0, 0, 0, 440.441, 182.33, 0, 0, 0, 0, 406.933, 181.859, 0, 0, 0, 0, 408.349, 151.183, 0, 0, 0, 0, 343.221, 151.655, 0, 0, 0, 0, 301.242, 142.398 )
+}
+
+[sub_resource type="Animation" id=4]
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("CustomerPath/PathFollow2D:unit_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( -0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 150, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 2, -2 ),
+"update": 0,
+"values": [ Vector2( 150, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 150, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("UI:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, -2 ),
+"update": 0,
+"values": [ Vector2( 150, 0 ), Vector2( 0, 0 ) ]
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -71.2094
+margin_top = -54.8913
+margin_right = 598.791
+margin_bottom = 341.109
+color = Color( 0.141176, 0.133333, 0.133333, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreHolder" parent="." instance=ExtResource( 7 )]
+
+[node name="UI" parent="." instance=ExtResource( 1 )]
+
+[node name="ShopTiles" parent="." instance=ExtResource( 3 )]
+tile_data = PoolIntArray( 131093, 536870931, 0, 196611, 21, 0, 196613, 536870921, 0, 196614, 536870921, 0, 196615, 536870924, 0, 196616, 536870921, 0, 196617, 536870921, 0, 196618, 536870921, 0, 196619, 12, 0, 196620, 536870921, 0, 196621, 536870921, 0, 196622, 536870921, 0, 196623, 536870924, 0, 196624, 536870921, 0, 196625, 536870921, 0, 196631, 536870931, 0, 262149, 536870921, 0, 262150, 29, 0, 262151, 536870915, 0, 262152, 4, 0, 262153, 35, 0, 262156, 3, 0, 262157, 536870916, 0, 262158, 536870916, 0, 262159, 15, 0, 262160, 37, 0, 262161, 536870921, 0, 327680, 536870932, 0, 327685, 536870921, 0, 327690, 7, 0, 327697, 536870921, 0, 327698, 536870921, 0, 327699, 536870921, 0, 327700, 12, 0, 327701, 536870921, 0, 393221, 12, 0, 393233, 1, 0, 393235, 536870915, 0, 393237, 536870921, 0, 393238, 536870921, 0, 524283, -1610612711, 0, 524284, -1610612711, 0, 524285, -1610612711, 0, 524286, -1610612711, 0, 524287, -1610612711, 0, 458752, -1610612711, 0, 458753, -1610612709, 0, 458757, 536870921, 0, 458759, 7, 0, 458761, 7, 0, 458763, 7, 0, 458769, 1, 0, 458774, 536870921, 0, 458775, 36, 0, 524288, 23, 0, 524289, 25, 0, 524293, 12, 0, 524305, 536870913, 0, 524309, 536870928, 0, 524310, 536870921, 0, 589825, 25, 0, 589826, 536870936, 0, 589829, 536870921, 0, 589840, 32, 0, 589841, 536870913, 0, 589845, 536870922, 0, 589847, 536870926, 0, 589848, 536870926, 0, 589849, 536870926, 0, 655360, 536870933, 0, 655361, 25, 0, 655365, 12, 0, 655367, 7, 0, 655369, 7, 0, 655371, 7, 0, 655375, 12, 0, 655377, 536870914, 0, 655381, 536870928, 0, 655382, 536870921, 0, 655385, 536870926, 0, 720896, 536870934, 0, 720897, 25, 0, 720901, 536870921, 0, 720911, 9, 0, 720917, 536870921, 0, 720918, 536870921, 0, 720919, 536870933, 0, 720921, 536870926, 0, 720922, 536870926, 0, 720923, 536870926, 0, 786433, 25, 0, 786435, 536870932, 0, 786437, 536870921, 0, 786438, 37, 0, 786439, 16, 0, 786441, 7, 0, 786446, 35, 0, 786447, 536870921, 0, 786448, 536870921, 0, 786449, 536870921, 0, 786450, 536870921, 0, 786451, 536870921, 0, 786452, 12, 0, 786453, 536870921, 0, 786459, 536870926, 0, 786463, 536870934, 0, 851969, 25, 0, 851973, 536870921, 0, 851974, 536870921, 0, 851975, 536870924, 0, 851976, 536870921, 0, 851977, 536870921, 0, 851978, 536870921, 0, 851979, 536870921, 0, 851980, 536870921, 0, 851981, 536870924, 0, 851982, 536870921, 0, 851983, 536870921, 0, 851984, 536870921, 0, 851995, 536870926, 0, 851996, 31, 0, 917505, 28, 0, 917516, 536870936, 0, 917524, 536870934, 0, 917528, 27, 0, 917529, -536870887, 0, 917530, -536870887, 0, 917531, -1610612708, 0, 917532, -536870887, 0, 917533, -536870887, 0, 917534, -536870887, 0, 917535, -536870887, 0, 917536, -536870887, 0, 917537, -536870887, 0, 983041, 25, 0, 983045, 536870934, 0, 983059, 27, 0, 983060, -1073741799, 0, 983061, -1073741799, 0, 983062, -1073741799, 0, 983063, -1073741799, 0, 983064, 1610612763, 0, 983065, 23, 0, 983067, 536870926, 0, 1048577, 25, 0, 1048595, 25, 0, 1048603, 536870926, 0, 1114113, 25, 0, 1179649, 25, 0, 5243008, 0, 0 )
+
+[node name="Shelf" type="Node" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Shelf"]
+position = Vector2( 167.847, 83.1614 )
+
+[node name="Position2D2" type="Position2D" parent="Shelf"]
+position = Vector2( 120.111, 115.142 )
+
+[node name="Position2D3" type="Position2D" parent="Shelf"]
+position = Vector2( 184.041, 115.142 )
+
+[node name="Position2D4" type="Position2D" parent="Shelf"]
+position = Vector2( 151.713, 114.906 )
+
+[node name="Position2D5" type="Position2D" parent="Shelf"]
+position = Vector2( 151.713, 163.279 )
+
+[node name="Position2D6" type="Position2D" parent="Shelf"]
+position = Vector2( 119.857, 162.807 )
+
+[node name="Position2D7" type="Position2D" parent="Shelf"]
+position = Vector2( 183.805, 163.043 )
+
+[node name="Position2D8" type="Position2D" parent="Shelf"]
+position = Vector2( 151.713, 194.663 )
+
+[node name="Shopkeeper" parent="." instance=ExtResource( 5 )]
+position = Vector2( 260.991, 124.762 )
+
+[node name="CandleLight" type="Light2D" parent="."]
+position = Vector2( 120.134, 196.487 )
+texture = ExtResource( 4 )
+texture_scale = 0.5
+color = Color( 0.803922, 0.654902, 0.0705882, 0.6 )
+energy = 0.6
+range_z_min = -2048
+range_z_max = 2048
+range_item_cull_mask = -2147483647
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CandleLight"]
+autoplay = "flame"
+anims/flame = SubResource( 1 )
+
+[node name="CauldronLight" type="Light2D" parent="."]
+position = Vector2( 246.996, 74.1644 )
+texture = ExtResource( 4 )
+texture_scale = 0.25
+color = Color( 0.803922, 0.431373, 0.0705882, 1 )
+range_z_min = -2048
+range_z_max = 2048
+range_item_cull_mask = -2147483647
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CauldronLight"]
+autoplay = "pulse"
+anims/pulse = SubResource( 2 )
+
+[node name="CandleLight2" type="Light2D" parent="."]
+position = Vector2( 344.215, 131.741 )
+texture = ExtResource( 4 )
+texture_scale = 0.25
+color = Color( 0.803922, 0.431373, 0.0705882, 1 )
+energy = 0.5
+range_z_min = -2048
+range_z_max = 2048
+range_item_cull_mask = -2147483647
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="CandleLight3" type="Light2D" parent="."]
+position = Vector2( 344.158, 163.945 )
+texture = ExtResource( 4 )
+texture_scale = 0.25
+color = Color( 0.803922, 0.431373, 0.0705882, 1 )
+energy = 0.5
+range_z_min = -2048
+range_z_max = 2048
+range_item_cull_mask = -2147483647
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="CustomerPath" type="Path2D" parent="."]
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CustomerPath"]
+position = Vector2( 440.912, 263.504 )
+rotation = -1.57661
+rotate = false
+cubic_interp = false
+loop = false
+
+[node name="Ingredients" type="YSort" parent="."]
+
+[node name="RoundTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[node name="CustomerAnimations" type="AnimationPlayer" parent="."]
+anims/customer_walk = SubResource( 4 )
+anims/hide_cauldron = SubResource( 5 )
+anims/show_cauldron = SubResource( 6 )
+
+[node name="UIAnimations" type="AnimationPlayer" parent="."]
+anims/hide_cauldron = SubResource( 7 )
+anims/show_cauldron = SubResource( 8 )
+
+[node name="CashRegister" type="Position2D" parent="."]
+position = Vector2( 260.804, 127.252 )
+[connection signal="cauldron_mixed" from="UI" to="." method="_on_UI_cauldron_mixed"]
+[connection signal="customer_timer_ended" from="UI" to="." method="_on_UI_customer_timer_ended"]
+[connection signal="ritual_active" from="UI" to="." method="_on_UI_ritual_active"]
+[connection signal="timeout" from="RoundTimer" to="." method="_on_RoundTimer_timeout"]

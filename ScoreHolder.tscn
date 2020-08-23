@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ScoreHolder.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="ScoreHolder" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatsContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 4.0
+margin_right = 213.0
+margin_bottom = 36.0
+theme = SubResource( 2 )
+custom_constants/separation = 32
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundContainer" type="HBoxContainer" parent="MarginContainer/StatsContainer"]
+margin_right = 58.0
+margin_bottom = 32.0
+
+[node name="RoundLabel" type="Label" parent="MarginContainer/StatsContainer/RoundContainer"]
+margin_top = 11.0
+margin_right = 40.0
+margin_bottom = 21.0
+text = "customer"
+
+[node name="RoundValue" type="Label" parent="MarginContainer/StatsContainer/RoundContainer"]
+margin_left = 44.0
+margin_top = 11.0
+margin_right = 58.0
+margin_bottom = 21.0
+text = "1/3"
+
+[node name="DayContainer" type="HBoxContainer" parent="MarginContainer/StatsContainer"]
+margin_left = 90.0
+margin_right = 123.0
+margin_bottom = 32.0
+
+[node name="DayLabel" type="Label" parent="MarginContainer/StatsContainer/DayContainer"]
+margin_top = 11.0
+margin_right = 15.0
+margin_bottom = 21.0
+text = "Day"
+
+[node name="DayValue" type="Label" parent="MarginContainer/StatsContainer/DayContainer"]
+margin_left = 19.0
+margin_top = 11.0
+margin_right = 33.0
+margin_bottom = 21.0
+text = "1/5"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="MarginContainer/StatsContainer"]
+margin_left = 155.0
+margin_right = 197.0
+margin_bottom = 32.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/StatsContainer/ScoreContainer"]
+margin_top = 11.0
+margin_right = 20.0
+margin_bottom = 21.0
+text = "CASH"
+
+[node name="ScoreValue" type="Label" parent="MarginContainer/StatsContainer/ScoreContainer"]
+margin_left = 24.0
+margin_top = 11.0
+margin_right = 42.0
+margin_bottom = 21.0
+text = "1000"

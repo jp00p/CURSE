@@ -1,0 +1,251 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Fonts/Kenney Mini.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://UI.gd" type="Script" id=2]
+[ext_resource path="res://UI/progress-fill.png" type="Texture" id=3]
+[ext_resource path="res://UI/panel_brown.png" type="Texture" id=4]
+[ext_resource path="res://UI/buttonLong_brown_pressed.png" type="Texture" id=5]
+[ext_resource path="res://UI/buttonLong_brown.png" type="Texture" id=6]
+[ext_resource path="res://UI/iconCircle_brown.png" type="Texture" id=7]
+[ext_resource path="res://UI/CauldronButtonNormal.tres" type="StyleBox" id=8]
+[ext_resource path="res://UI/progress-behind.png" type="Texture" id=9]
+[ext_resource path="res://UI/buttonLong_grey.png" type="Texture" id=10]
+[ext_resource path="res://UI/timer2.png" type="Texture" id=11]
+[ext_resource path="res://UI/timer1.png" type="Texture" id=12]
+[ext_resource path="res://UI/timer3.png" type="Texture" id=13]
+[ext_resource path="res://Particles/SparklePuff.tscn" type="PackedScene" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "hide_text"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -0.5, -0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 150, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show_text"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( -2, -0.5 ),
+"update": 0,
+"values": [ Vector2( 150, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 190, 49 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 1, 190, 45 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 190, 49 )
+modulate_color = Color( 0.341176, 0.341176, 0.341176, 1 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 13 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="UIContainer" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -124.0
+rect_min_size = Vector2( 124, 256 )
+theme = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 116.0
+margin_bottom = 248.0
+custom_constants/separation = 8
+
+[node name="TextContainer" type="NinePatchRect" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_right = 108.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 56 )
+size_flags_vertical = 0
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 100, 100 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 83
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="UIContainer/MarginContainer/VBoxContainer/TextContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 8
+custom_constants/margin_top = 8
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBox" type="RichTextLabel" parent="UIContainer/MarginContainer/VBoxContainer/TextContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 100.0
+margin_bottom = 48.0
+text = "Fix your ugly butt!"
+fit_content_height = true
+
+[node name="TextAnimator" type="AnimationPlayer" parent="UIContainer/MarginContainer/VBoxContainer/TextContainer"]
+anims/hide_text = SubResource( 3 )
+anims/show_text = SubResource( 4 )
+
+[node name="Label" type="Label" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 108.0
+margin_bottom = 74.0
+text = "Ritual Components"
+align = 1
+valign = 2
+
+[node name="CauldronSlots" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_top = 82.0
+margin_right = 108.0
+margin_bottom = 99.0
+mouse_filter = 2
+custom_constants/separation = 8
+alignment = 1
+
+[node name="Slot1" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/CauldronSlots"]
+self_modulate = Color( 1, 1, 1, 0.45098 )
+margin_left = 20.0
+margin_right = 37.0
+margin_bottom = 17.0
+texture = ExtResource( 7 )
+
+[node name="Slot2" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/CauldronSlots"]
+self_modulate = Color( 1, 1, 1, 0.45098 )
+margin_left = 45.0
+margin_right = 62.0
+margin_bottom = 17.0
+texture = ExtResource( 7 )
+
+[node name="Slot3" type="TextureRect" parent="UIContainer/MarginContainer/VBoxContainer/CauldronSlots"]
+self_modulate = Color( 1, 1, 1, 0.45098 )
+margin_left = 70.0
+margin_right = 87.0
+margin_bottom = 17.0
+texture = ExtResource( 7 )
+
+[node name="CauldronMix" type="Button" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_top = 107.0
+margin_right = 108.0
+margin_bottom = 127.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = ExtResource( 8 )
+text = "Perform Ritual"
+
+[node name="SparklePuff" parent="UIContainer/MarginContainer/VBoxContainer/CauldronMix" instance=ExtResource( 14 )]
+position = Vector2( 55.5, 16 )
+amount = 30
+lifetime = 2.0
+one_shot = false
+explosiveness = 0.5
+emission_shape = 2
+emission_rect_extents = Vector2( 50, 1 )
+direction = Vector2( 1, 1 )
+gravity = Vector2( 0, 51 )
+initial_velocity = 1.0
+angle = 180.0
+hue_variation = 1.0
+hue_variation_random = 1.0
+
+[node name="CauldronProgress" type="TextureProgress" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_top = 135.0
+margin_right = 108.0
+margin_bottom = 153.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 3 )
+
+[node name="TimeContainer" type="HBoxContainer" parent="UIContainer/MarginContainer/VBoxContainer"]
+margin_top = 161.0
+margin_right = 108.0
+margin_bottom = 177.0
+alignment = 1
+
+[node name="Control" type="Control" parent="UIContainer/MarginContainer/VBoxContainer/TimeContainer"]
+margin_left = 39.0
+margin_right = 55.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+
+[node name="TimerGraphic" type="AnimatedSprite" parent="UIContainer/MarginContainer/VBoxContainer/TimeContainer/Control"]
+frames = SubResource( 8 )
+playing = true
+centered = false
+
+[node name="TimeRemaining" type="Label" parent="UIContainer/MarginContainer/VBoxContainer/TimeContainer"]
+margin_left = 59.0
+margin_right = 69.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+text = "60"
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="."]
+[connection signal="pressed" from="UIContainer/MarginContainer/VBoxContainer/CauldronMix" to="." method="_on_CauldronMix_pressed"]
+[connection signal="value_changed" from="UIContainer/MarginContainer/VBoxContainer/CauldronProgress" to="." method="_on_CauldronProgress_value_changed"]
+[connection signal="timeout" from="Timer" to="." method="timer_tick"]

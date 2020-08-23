@@ -1,0 +1,203 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://ShopTiles.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Kenney Mini.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Particles/circle_05.png" type="Texture" id=4]
+[ext_resource path="res://Ingredients/Ingredient.tscn" type="PackedScene" id=5]
+[ext_resource path="res://UI/CauldronButtonNormal.tres" type="StyleBox" id=6]
+[ext_resource path="res://Title.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=3]
+resource_name = "pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.5, -0.5, 0.5 ),
+"update": 0,
+"values": [ 1.0, 1.7, 1.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "pulse"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 2, -2, 2 ),
+"update": 0,
+"values": [ 1.0, 1.7, 1.0 ]
+}
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 8
+font_data = ExtResource( 3 )
+
+[node name="Title" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -93.267
+margin_top = -63.4473
+margin_right = 611.733
+margin_bottom = 321.553
+color = Color( 0.0313726, 0.027451, 0.027451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopTiles" parent="." instance=ExtResource( 1 )]
+tile_data = PoolIntArray( 5243008, 0, 0 )
+
+[node name="ShopTiles2" parent="." instance=ExtResource( 1 )]
+modulate = Color( 0, 0, 0, 1 )
+tile_data = PoolIntArray( 65549, 15, 0, 65559, 35, 0, 196609, 37, 0, 196614, 35, 0, 327708, 37, 0, 393225, 9, 0, 393226, 12, 0, 393227, 9, 0, 393236, 9, 0, 393237, 12, 0, 393238, 9, 0, 458761, 12, 0, 458763, 12, 0, 458772, 12, 0, 458774, 12, 0, 524297, 9, 0, 524298, 12, 0, 524299, 9, 0, 524308, 9, 0, 524309, 12, 0, 524310, 9, 0, 655389, 15, 0, 720900, 35, 0, 720907, 37, 0, 851972, 15, 0, 851996, 35, 0, 917524, 37, 0, 5243008, 0, 0 )
+
+[node name="Light2D" type="Light2D" parent="ShopTiles2"]
+position = Vector2( 168, 119 )
+texture = ExtResource( 4 )
+texture_scale = 9.76
+color = Color( 1, 0.654902, 0, 1 )
+mode = 1
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShopTiles2/Light2D"]
+autoplay = "pulse"
+anims/pulse = SubResource( 3 )
+
+[node name="Light2D2" type="Light2D" parent="ShopTiles2"]
+position = Vector2( 345.794, 118 )
+texture = ExtResource( 4 )
+texture_scale = 6.82
+color = Color( 1, 0.654902, 0, 1 )
+shadow_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ShopTiles2/Light2D2"]
+autoplay = "pulse"
+anims/pulse = SubResource( 4 )
+
+[node name="Ingredient" parent="." instance=ExtResource( 5 )]
+margin_left = 97.5
+margin_top = 173.5
+margin_right = 113.5
+margin_bottom = 189.5
+
+[node name="Ingredient2" parent="." instance=ExtResource( 5 )]
+margin_left = 76.0
+margin_top = 55.0
+margin_right = 92.0
+margin_bottom = 71.0
+
+[node name="Ingredient3" parent="." instance=ExtResource( 5 )]
+margin_left = 339.5
+margin_top = 37.5
+margin_right = 355.5
+margin_bottom = 53.5
+
+[node name="Ingredient4" parent="." instance=ExtResource( 5 )]
+margin_left = 397.5
+margin_top = 113.5
+margin_right = 413.5
+margin_bottom = 129.5
+
+[node name="Ingredient5" parent="." instance=ExtResource( 5 )]
+margin_left = 350.5
+margin_top = 204.0
+margin_right = 366.5
+margin_bottom = 220.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+light_mask = 2
+margin_right = 512.0
+margin_bottom = 256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer"]
+margin_left = 134.0
+margin_top = 41.0
+margin_right = 378.0
+margin_bottom = 215.0
+custom_constants/separation = 12
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_right = 244.0
+margin_bottom = 20.0
+custom_fonts/font = SubResource( 1 )
+text = "Curse & Carry"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 244.0
+margin_bottom = 75.0
+custom_fonts/font = SubResource( 2 )
+text = "A curse shop management sim
+(and puzzle game)"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_left = 71.0
+margin_top = 87.0
+margin_right = 173.0
+margin_bottom = 117.0
+size_flags_horizontal = 4
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 5 )
+text = "START GAME"
+
+[node name="Label3" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 129.0
+margin_right = 244.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 6 )
+text = "made by 
+KMK-PDX and jp00p"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="CanvasLayer/CenterContainer/VBoxContainer"]
+margin_top = 164.0
+margin_right = 244.0
+margin_bottom = 174.0
+custom_fonts/font = SubResource( 6 )
+text = "created for the kenney jam 2020"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="CanvasLayer/CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]

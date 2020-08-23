@@ -1,0 +1,145 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://HighScores.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/Kenney Mini.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Kenney Mini Square.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ShopTiles.tres" type="TileSet" id=4]
+[ext_resource path="res://UI/CauldronButtonNormal.tres" type="StyleBox" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 8
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[node name="HighScores" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -8.0
+margin_top = -7.0
+margin_right = 519.0
+margin_bottom = 263.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 90.0
+margin_top = 51.0
+margin_right = 422.0
+margin_bottom = 205.0
+custom_constants/separation = 38
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_right = 182.0
+margin_bottom = 154.0
+
+[node name="Label" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_right = 182.0
+margin_bottom = 20.0
+text = "Thank you for playing!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 182.0
+margin_bottom = 44.0
+text = "We love you."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 220.0
+margin_right = 332.0
+margin_bottom = 154.0
+custom_constants/separation = 16
+
+[node name="Label2" type="Label" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_right = 112.0
+margin_bottom = 10.0
+custom_fonts/font = SubResource( 3 )
+text = "Employees of the month:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
+margin_top = 26.0
+margin_right = 112.0
+margin_bottom = 154.0
+rect_min_size = Vector2( 112, 128 )
+size_flags_horizontal = 0
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2/ScrollContainer"]
+margin_right = 96.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 96, 128 )
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/HBoxContainer/VBoxContainer2/ScrollContainer/CenterContainer"]
+margin_right = 96.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 96, 128 )
+size_flags_horizontal = 2
+theme = SubResource( 5 )
+custom_constants/vseparation = 8
+custom_constants/hseparation = 16
+columns = 2
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 65541, 39, 0, 65548, 39, 0, 65555, 39, 0, 65566, 39, 0, 131088, 39, 0, 262146, 39, 0, 327709, 39, 0, 458755, 39, 0, 524301, 39, 0, 589831, 39, 0, 720898, 39, 0, 720926, 39, 0, 917517, 39, 0 )
+
+[node name="Restart" type="Button" parent="."]
+margin_left = 200.381
+margin_top = 214.436
+margin_right = 296.381
+margin_bottom = 244.436
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+text = "Play Again"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="request_completed" from="HTTPRequest" to="." method="_on_HTTPRequest_request_completed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.0860927, 0.456954, 0.781457, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 0, 0.755859, 1, 0.631373, 0, 0.478431, 1, 1, 1, 1, 0 )
+
+[node name="SparklePuff" type="CPUParticles2D"]
+position = Vector2( 8, 8 )
+emitting = false
+amount = 20
+one_shot = true
+preprocess = 0.25
+speed_scale = 1.5
+explosiveness = 1.0
+spread = 180.0
+initial_velocity = 40.0
+angular_velocity = 44.0
+linear_accel = 1.0
+damping = 44.0
+angle = 45.0
+angle_random = 1.0
+color_ramp = SubResource( 1 )

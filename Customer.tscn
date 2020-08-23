@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Customers/customer1.png" type="Texture" id=1]
+[ext_resource path="res://Particles/circle_05.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/Wind.shader" type="Shader" id=3]
+[ext_resource path="res://Customer.gd" type="Script" id=4]
+[ext_resource path="res://Customers/emote_faceAngry.png" type="Texture" id=5]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/speed = 1.0
+shader_param/minStrength = 0.025
+shader_param/maxStrength = 0.025
+shader_param/strengthScale = 50.0
+shader_param/interval = 5.0
+shader_param/detail = 0.0
+shader_param/distortion = 0.25
+shader_param/heightOffset = 0.5
+
+[node name="Customer" type="Node2D"]
+position = Vector2( 3.05176e-05, 3.05176e-05 )
+script = ExtResource( 4 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = 0.5
+color = Color( 1, 0, 0, 1 )
+shadow_enabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 1 )
+texture = ExtResource( 1 )
+region_rect = Rect2( 466, 97, 12, 14 )
+
+[node name="Emote" type="Sprite" parent="."]
+visible = false
+position = Vector2( -11, -20 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
+centered = false

@@ -1,0 +1,124 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://UI/panel_brown.png" type="Texture" id=1]
+[ext_resource path="res://Fonts/Kenney Mini.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/CauldronButtonNormal.tres" type="StyleBox" id=3]
+[ext_resource path="res://Intro.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Intro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -62.7329
+margin_top = -29.0294
+margin_right = 633.267
+margin_bottom = 324.971
+color = Color( 0.0901961, 0.0862745, 0.0862745, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_top = 8.0
+margin_right = 512.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 512, 0 )
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 44.0
+margin_right = 140.0
+margin_bottom = 240.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer/CenterContainer"]
+margin_top = 56.0
+margin_right = 96.0
+margin_bottom = 184.0
+rect_min_size = Vector2( 96, 128 )
+text = "In the bowels of the Monster Underground Market resides the shop Curse and Carry, the employer of your most recent temp position. Upon arrival you find a note that says:"
+
+[node name="CenterContainer2" type="CenterContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 144.0
+margin_right = 384.0
+margin_bottom = 240.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CenterContainer/HBoxContainer/CenterContainer2"]
+self_modulate = Color( 1, 1, 1, 0.54902 )
+margin_right = 240.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 240, 240 )
+texture = ExtResource( 1 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/HBoxContainer/CenterContainer2/NinePatchRect"]
+margin_left = 16.0
+margin_top = 26.232
+margin_right = 223.0
+margin_bottom = 180.232
+rect_min_size = Vector2( 96, 96 )
+bbcode_enabled = true
+bbcode_text = "Dear Temp, 
+
+Thanks for taking on the shop while I visit the Abyss for 5 days. Don't worry if you've never performed a curse ritual before, [wave amp=3]it's easy:[/wave] 
+
+[u]You need to gather 3 ingredients, then mash the \"Perform Ritual\" button before the time runs out![/u]
+
+If you forget what an ingredient does, try [rainbow sat=0.5]hovering your mouse[/rainbow] over it for a refresher.
+
+You'll only get [u]3 customers each day[/u] so make sure you read each request [shake rate=15 level=1]carefully[/shake] as you'll fail the order if you concoct the wrong curse. 
+
+[right]love,
+[color=#3f0000]Momo the curse shop owner[/color]"
+text = "Dear Temp, 
+
+Thanks for taking on the shop while I visit the Abyss for 5 days. Don't worry if you've never performed a curse ritual before, it's easy: 
+
+You need to gather 3 ingredients, then mash the \"Perform Ritual\" button before the time runs out!
+
+If you forget what an ingredient does, try hovering your mouse over it for a refresher.
+
+You'll only get 3 customers each day so make sure you read each request carefully as you'll fail the order if you concoct the wrong curse. 
+
+love,
+Momo the curse shop owner"
+fit_content_height = true
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer3" type="CenterContainer" parent="CenterContainer/HBoxContainer"]
+margin_left = 388.0
+margin_right = 467.0
+margin_bottom = 240.0
+
+[node name="Button" type="Button" parent="CenterContainer/HBoxContainer/CenterContainer3"]
+margin_top = 110.0
+margin_right = 79.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 64, 20 )
+size_flags_horizontal = 0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+text = "Start your shift!"
+[connection signal="pressed" from="CenterContainer/HBoxContainer/CenterContainer3/Button" to="." method="_on_Button_pressed"]
