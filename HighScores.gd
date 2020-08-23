@@ -33,5 +33,5 @@ func _on_Restart_pressed():
 	Globals.score = 0
 	Globals.current_day = 1
 	Globals.current_round = 1
-	Globals.round_time = Globals.round_time[0]
+	Globals.round_time = Globals.round_times[0]
 	get_tree().change_scene("res://Title.tscn")
