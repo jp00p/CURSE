@@ -1,6 +1,7 @@
 extends Node2D
 
 var move_to = Vector2()
+onready var ritualsound = $AudioStreamPlayer
 
 func _ready():
 	move_to = global_position
@@ -13,6 +14,8 @@ func start_ritual():
 	$CPUParticles2D.set_visible(true)
 	$CPUParticles2D.set_emitting(true)
 	$Light2D.set_energy(2)
+	ritualsound.play()
+	
 	
 func stop_ritual():
 	print("ending ritual")
