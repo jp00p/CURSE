@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://colored_transparent_packed.png" type="Texture" id=1]
 [ext_resource path="res://Shaders/Wind.shader" type="Shader" id=2]
 [ext_resource path="res://Particles/circle_05.png" type="Texture" id=3]
 [ext_resource path="res://Shopkeeper.gd" type="Script" id=4]
 [ext_resource path="res://Particles/magic_01.png" type="Texture" id=5]
+[ext_resource path="res://audio/lowDown.ogg" type="AudioStream" id=6]
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.278146, 0.450331, 0.596026, 0.735099, 0.89404 )
 colors = PoolColorArray( 0, 0, 0, 0, 1, 0, 0, 1, 0.978569, 1, 0.155963, 1, 0.0371094, 1, 0, 1, 0, 0.0442638, 0.985352, 1, 1, 0, 0.873047, 1 )
 
-[sub_resource type="ShaderMaterial" id=1]
+[sub_resource type="ShaderMaterial" id=2]
 shader = ExtResource( 2 )
 shader_param/speed = 0.5
 shader_param/minStrength = 0.025
@@ -21,8 +22,7 @@ shader_param/detail = 1.5
 shader_param/distortion = 1.0
 shader_param/heightOffset = 0.0
 
-[sub_resource type="Animation" id=2]
-resource_name = "glow"
+[sub_resource type="Animation" id=3]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -58,7 +58,7 @@ linear_accel = 64.0
 radial_accel = 101.0
 damping = 64.0
 scale_amount = 0.5
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 1 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
@@ -68,11 +68,15 @@ range_height = 16.0
 shadow_enabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 1 )
+material = SubResource( 2 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 416, 96, 16, 16 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "glow"
-anims/glow = SubResource( 2 )
+anims/glow = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -1.0

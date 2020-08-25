@@ -3,6 +3,8 @@ extends Node2D
 onready var shelf = $Shelf
 onready var ingredient_holder = $Ingredients
 onready var customer_path = $CustomerPath/PathFollow2D
+onready var bgmusic = $BGAudio
+onready var selectaudio = $ItemSelectAudio
 var current_customer = {}
 var mixed = false
 
@@ -87,6 +89,7 @@ func _ingredient_selected(type, sprite, hint, pos):
 	$Shopkeeper.move_to = pos
 	Globals.add_to_cauldron([type, sprite, hint])
 	$UI.add_to_cauldron_slot(sprite, Globals.cauldron_contents.size()-1)
+	selectaudio.play()
 	
 func clear_cauldron():
 	Globals.empty_cauldron()

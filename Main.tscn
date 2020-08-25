@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://UI.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://ShopTiles.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Particles/circle_05.png" type="Texture" id=4]
 [ext_resource path="res://Shopkeeper.tscn" type="PackedScene" id=5]
+[ext_resource path="res://audio/Retro Reggae.ogg" type="AudioStream" id=6]
 [ext_resource path="res://ScoreHolder.tscn" type="PackedScene" id=7]
+[ext_resource path="res://audio/success.ogg" type="AudioStream" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "flame"
@@ -250,6 +252,13 @@ anims/show_cauldron = SubResource( 8 )
 
 [node name="CashRegister" type="Position2D" parent="."]
 position = Vector2( 260.804, 127.252 )
+
+[node name="BGAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="ItemSelectAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 [connection signal="cauldron_mixed" from="UI" to="." method="_on_UI_cauldron_mixed"]
 [connection signal="customer_timer_ended" from="UI" to="." method="_on_UI_customer_timer_ended"]
 [connection signal="ritual_active" from="UI" to="." method="_on_UI_ritual_active"]
